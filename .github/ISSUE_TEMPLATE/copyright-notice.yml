@@ -1,14 +1,14 @@
 name: Copyright / DMCA / DSA notice
-description: You hold rights in a work and an extension in this repository infringes them.
+description: You hold rights in a work and an extension that Myspoti installs infringes them.
 title: "[Copyright notice] "
 labels: ["copyright"]
 body:
   - type: markdown
     attributes:
       value: |
-        Read the "Copyright, DMCA and DSA notices" section of [REPORTING.md](../blob/main/REPORTING.md).
+        Read the "Copyright, DMCA and DSA notices" section of [REPORTING.md](https://github.com/kota-zo/myspoti-extensions/blob/main/REPORTING.md).
         **This form is public**, with your name and details. To keep them private, send the same
-        information to the designated contact in REPORTING.md (`CONTACT_EMAIL_TBD`) instead.
+        information to the designated contact in REPORTING.md (myspoti.app@gmail.com) instead.
         Every field marked required must be filled in, or the notice cannot be acted on.
   - type: input
     id: rights-holder

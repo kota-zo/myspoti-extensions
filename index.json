@@ -1,29 +1,5 @@
 {
-    "format": 1,
-    "name": "Myspoti official extensions",
-    "extensions": [
-        {
-            "id": "app.myspoti.samples.lrclib",
-            "name": "LRCLIB Lyrics (sample)",
-            "version": "1.0.0",
-            "versionCode": 1,
-            "author": "Myspoti",
-            "description": "A sample lyrics extension: line-synced lyrics from lrclib.net, plain text when that is all there is.",
-            "provides": [
-                "lyrics"
-            ],
-            "permissions": [
-                {
-                    "name": "network",
-                    "hosts": [
-                        "lrclib.net"
-                    ],
-                    "why": "Asks lrclib.net for the song's lyrics"
-                }
-            ],
-            "url": "dist/app.myspoti.samples.lrclib-1.0.0.zip",
-            "sha256": "caf5af079093022628c5f3c3e094c35fcc2c2469c6eb7725cb48e9b8fef199f2",
-            "size": 14005
-        }
-    ]
+  "format": 1,
+  "name": "Myspoti verified extensions",
+  "extensions": []
 }

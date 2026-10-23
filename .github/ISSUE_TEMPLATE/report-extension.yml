@@ -1,20 +1,22 @@
 name: Report an extension
 description: A malicious, abusive or policy-breaking extension, or a counter-notice from an author.
-title: "[Report] "
+title: "Report: "
 labels: ["report"]
 body:
   - type: markdown
     attributes:
       value: |
-        Read [REPORTING.md](../blob/main/REPORTING.md) and [POLICY.md](../blob/main/POLICY.md).
-        This form is public. A vulnerability or personal data: email the contact in REPORTING.md instead.
+        Read [REPORTING.md](https://github.com/kota-zo/myspoti-extensions/blob/main/REPORTING.md) and [POLICY.md](https://github.com/kota-zo/myspoti-extensions/blob/main/POLICY.md).
+        This form is public. A vulnerability or personal data: email myspoti.app@gmail.com instead.
+        The Report button in Myspoti fills the id, version, source and package hash for you.
   - type: dropdown
     id: kind
     attributes:
       label: What are you sending?
       options:
         - Report of a malicious or abusive extension
-        - Counter-notice (I am the author of a removed extension)
+        - Counter-notice (I am the author of a blocked extension)
+      default: 0
     validations:
       required: true
   - type: input
@@ -31,18 +33,32 @@ body:
       placeholder: 1.0.0
     validations:
       required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source repository
+      placeholder: https://github.com/someone/name
+    validations:
+      required: false
+  - type: input
+    id: sha256
+    attributes:
+      label: Package sha256
+      description: Shown on the extension's page in Myspoti. It tells which package you saw.
+    validations:
+      required: false
   - type: dropdown
     id: policy
     attributes:
       label: Which part of the policy
       options:
         - Circumvents DRM or access controls
-        - Downloads copyrighted content without authorization
+        - Facilitates piracy (copyrighted content without authorization)
         - Uses other people's accounts or credentials
+        - Steals credentials or data
         - Fakes Spotify playback or stream reports
         - Malware or destructive behavior
-        - Tracking or data collection
-        - Impersonation
+        - Impersonation or copied work
         - Other
         - Not applicable (counter-notice)
     validations:
@@ -51,13 +67,13 @@ body:
     id: what
     attributes:
       label: What it does and how you know
-      description: File and line, behavior, request seen. For a counter-notice, see the list in REPORTING.md (why it does not infringe, your statement, consent to jurisdiction).
+      description: File and line, behavior, request seen. For a counter-notice, the list in REPORTING.md (why it does not infringe, your statement, consent to jurisdiction).
     validations:
       required: true
   - type: input
     id: contact
     attributes:
       label: How to reach you
-      description: Only if you want an answer beyond this issue. It is public.
+      description: Only if you want an answer beyond this issue. It will be public.
     validations:
       required: false

@@ -1,1 +1,5 @@
 blank_issues_enabled: false
+contact_links:
+  - name: Vulnerability, personal data, or a notice you want to keep private
+    url: https://github.com/kota-zo/myspoti-extensions/blob/main/REPORTING.md
+    about: Email myspoti.app@gmail.com instead of opening a public issue.

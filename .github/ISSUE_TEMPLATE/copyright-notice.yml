@@ -1,0 +1,75 @@
+name: Copyright / DMCA / DSA notice
+description: You hold rights in a work and an extension in this repository infringes them.
+title: "[Copyright notice] "
+labels: ["copyright"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Read the "Copyright, DMCA and DSA notices" section of [REPORTING.md](../blob/main/REPORTING.md).
+        **This form is public**, with your name and details. To keep them private, send the same
+        information to the designated contact in REPORTING.md (`CONTACT_EMAIL_TBD`) instead.
+        Every field marked required must be filled in, or the notice cannot be acted on.
+  - type: input
+    id: rights-holder
+    attributes:
+      label: Rights holder
+      description: Name of the rights holder, and of the person sending the notice if it is an agent (with the authorization).
+    validations:
+      required: true
+  - type: textarea
+    id: work
+    attributes:
+      label: Copyrighted work
+      description: The work (title, author), where the original is, and your right in it.
+    validations:
+      required: true
+  - type: input
+    id: extension
+    attributes:
+      label: Extension id
+      placeholder: io.github.someone.name
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Extension version
+      placeholder: 1.0.0
+    validations:
+      required: true
+  - type: textarea
+    id: location
+    attributes:
+      label: Where the infringing material is
+      description: File and lines in the extension, or the URL it points to, and what it does with the work.
+    validations:
+      required: true
+  - type: checkboxes
+    id: good-faith
+    attributes:
+      label: Statement of good faith
+      options:
+        - label: I have a good-faith belief that the use described is not authorized by the rights holder, its agent or the law.
+          required: true
+  - type: checkboxes
+    id: accuracy
+    attributes:
+      label: Accuracy and authority
+      options:
+        - label: The information in this notice is accurate, and I am the rights holder or authorized to act on their behalf (under penalty of perjury where the law of this notice requires it).
+          required: true
+  - type: input
+    id: contact
+    attributes:
+      label: Contact details
+      description: An email address (and postal address if you wish) where we can reach you. It will be public on this issue.
+    validations:
+      required: true
+  - type: input
+    id: signature
+    attributes:
+      label: Signature
+      description: Your full name, typed as an electronic signature.
+    validations:
+      required: true

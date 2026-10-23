@@ -1,0 +1,53 @@
+name: build
+
+# No secrets are used. The only credential is the workflow's own GITHUB_TOKEN.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    # On a pull request: validate every manifest, rebuild, and fail if the committed
+    # dist/, index.json or README table differ from what the script produces.
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Index of the base branch
+        run: git show "origin/${{ github.base_ref }}:index.json" > "$RUNNER_TEMP/base-index.json" || echo '{}' > "$RUNNER_TEMP/base-index.json"
+      - name: Validate, build and compare
+        run: python3 scripts/build_index.py --check --base-index "$RUNNER_TEMP/base-index.json"
+
+  rebuild:
+    # On main: rebuild, and commit the outputs if they changed (for example after two merged
+    # pull requests that both touched index.json). If main is protected against pushes by
+    # Actions, this job fails and a maintainer commits the rebuild by hand.
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Rebuild
+        run: python3 scripts/build_index.py
+      - name: Commit the rebuild
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "Rebuild index and packages [skip ci]"
+            git push
+          fi

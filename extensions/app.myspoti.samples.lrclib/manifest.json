@@ -1,0 +1,15 @@
+{
+  "id": "app.myspoti.samples.lrclib",
+  "name": "LRCLIB Lyrics (sample)",
+  "version": "1.0.0",
+  "versionCode": 1,
+  "author": "Myspoti",
+  "description": "A sample lyrics extension: line-synced lyrics from lrclib.net, plain text when that is all there is.",
+  "provides": ["lyrics"],
+  "permissions": [
+    { "name": "network", "hosts": ["lrclib.net"], "why": "Asks lrclib.net for the song's lyrics" }
+  ],
+  "settings": [
+    { "key": "plainToo", "type": "toggle", "label": "Plain lyrics too", "description": "Also give lyrics without times.", "default": true }
+  ]
+}
